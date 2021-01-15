@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+.page-cate {
+  height: 100%;
+  display: flex;
+
+  .layout {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    .ul-layout {
+      width: 200px;
+      height: 100%;
+      background-color: #28243b;
+      position: fixed;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+
+      li {
+        padding: 20px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  main {
+    flex: 1;
+    position: relative;
+
+    .position {
+      position: absolute;
+      top: 20px;
+      right: 120px
+    }
+
+    .log-out {
+      position: absolute;
+      top: 20px;
+      right: 20px
+    }
+  }
+
+  .active {
+    color: #6b5fa2 !important;
+  }
+
+}
+

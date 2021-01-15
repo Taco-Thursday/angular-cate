@@ -1,0 +1,23 @@
+<div class="page-cate">
+  <div class="layout">
+    <ul class="ul-layout">
+      <li *ngFor="let item of cateList; let i = index" (click)="cateChange(i)"
+          [ngClass]="cateSelected == i ? 'active' : ''">{{item | translate }}
+      </li>
+    </ul>
+  </div>
+  <main>
+    <div class="position">
+      <button style="width: 112px" [matMenuTriggerFor]="menu" mat-raised-button
+              matTooltip="Switch the language"
+              aria-label="Button that displays a tooltip when focused or hovered over">{{'切换语言' | translate}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onCN()">中文</button>
+        <button mat-menu-item (click)="onUS()">English</button>
+      </mat-menu>
+    </div>
+    <button class="log-out" mat-raised-button
+            (click)="onLogOut()">{{'退出登录' | translate}}</button>
+    <router-outlet></router-outlet>
+  </main>
+</div>

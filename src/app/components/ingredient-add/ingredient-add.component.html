@@ -1,0 +1,77 @@
+<div class="page-ingredient-add">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="div-ingredient">
+      <div class="div-ingredient-left">
+        <mat-form-field>
+          <mat-select placeholder="{{'类型' | translate}}" formControlName="type">
+            <mat-option *ngFor="let item of typeName; let i=index" [value]="i+1">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="{{'名称' | translate}}" formControlName="name">
+          <mat-error *ngIf="profileForm.invalid">{{'请输入中文名' | translate}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="{{'英文名称' | translate}}" formControlName="name_en">
+          <mat-error *ngIf="profileForm.invalid">{{'请输入英文名' | translate}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="{{'计量单位组' | translate}}" formControlName="group_unit_id"
+                      (ngModelChange)="onGroup($event)">
+            <mat-option *ngFor="let item of measureList; let i=index" [value]="i + 1">{{item.display_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="{{'库存计量单位' | translate}}" formControlName="inventory_unit_id">
+            <mat-option [style.display]="measureVisible ? 'none' : 'block'"
+                        *ngFor="let item of measureList; let i=index"
+                        [value]="i + 1">{{item.base_unit.name}}</mat-option>
+            <mat-option *ngIf="measureVisible"
+                        [value]="measureList[measureIndex-1].measure_units[0].id">{{measureList[measureIndex - 1].base_unit.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="div-ingredient-right">
+        <mat-form-field>
+          <mat-select placeholder="{{'原料分类' | translate}}" formControlName="category_id"
+                      (ngModelChange)="onCategory($event)">
+            <mat-option *ngFor="let item of categoryList" [value]="item.id"
+                        [disabled]="item.level != 3">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="{{'存货科目' | translate}}" formControlName="acct_number">
+            <mat-option [style.display]="cateVisible ? 'none' : 'block'" *ngFor="let item of accountList"
+                        [value]="item.acct_number" [disabled]="!item.selectable">{{item.name}}</mat-option>
+            <mat-option *ngIf="cateVisible"
+                        [value]="acctData[0].k3_number">{{acctData[0].name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="{{'销售成本科目' | translate}}" formControlName="cost_acct_number">
+            <mat-option [style.display]="cateVisible ? 'none' : 'block'" *ngFor="let item of accountList"
+                        [value]="item.cost_acct_number" [disabled]="!item.selectable">{{item.name}}</mat-option>
+            <mat-option *ngIf="cateVisible"
+                        [value]="costData[0].k3_number">{{costData[0].name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="{{'销售收入科目' | translate}}" formControlName="sale_acct_number">
+            <mat-option [style.display]="cateVisible ? 'none' : 'block'" *ngFor="let item of accountList"
+                        [value]="item.sale_acct_number" [disabled]="!item.selectable">{{item.name}}</mat-option>
+            <mat-option *ngIf="cateVisible"
+                        [value]="saleData[0].k3_number">{{saleData[0].name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="{{'保质期(天)' | translate}}" formControlName="period">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-ingredient">
+      <button type="submit" class="submit" mat-raised-button [disabled]="!profileForm.valid">{{'提交' | translate}}
+      </button>
+      <button type="button" mat-raised-button (click)="onBack()">{{'返回' | translate}}</button>
+    </div>
+  </form>
+</div>

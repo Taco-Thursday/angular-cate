@@ -1,0 +1,22 @@
+<div class="page-login">
+  <div class="container">
+    <h2 class="title-login">Cages库存管理</h2>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="用户" formControlName="name" minlength="3">
+        <mat-error *ngIf="profileForm.invalid">请输入用户名（最少3位）</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="密码" formControlName="password" [type]="hide ? 'password' : 'text'" minlength="6">
+        <mat-icon matSuffix class="mat-icon material-icons mat-icon-no-color"
+                  (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="profileForm.invalid">请输入用户密码（最少6位）</mat-error>
+      </mat-form-field>
+      <button type="submit" class="login" mat-raised-button
+              [disabled]="!profileForm.valid">登录
+      </button>
+    </form>
+
+  </div>
+</div>

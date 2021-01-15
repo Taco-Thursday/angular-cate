@@ -1,0 +1,29 @@
+.page-ingredient-add {
+  width: 80%;
+  padding-bottom: 50px;
+  margin: 80px auto;
+  text-align: center;
+
+  .mat-form-field {
+    display: block;
+  }
+
+  .div-ingredient {
+    display: flex;
+    justify-content: space-between;
+
+    .div-ingredient-left {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .div-ingredient-right {
+      flex: 1;
+      margin-left: 20px
+    }
+  }
+
+  .btn-ingredient {
+    text-align: right;
+  }
+}

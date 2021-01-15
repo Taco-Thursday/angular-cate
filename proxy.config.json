@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://cages-inventory.osvlabs.com",
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

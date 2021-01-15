@@ -1,0 +1,32 @@
+<div class="page-measure">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target)" placeholder="{{'搜索' | translate}}">
+  </mat-form-field>
+  <button mat-raised-button color="primary" style="margin-left: 20px"
+          (click)="measureAdd()">{{'添加' | translate}}</button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="名称">
+      <th mat-header-cell *matHeaderCellDef>{{'名称' | translate}}</th>
+      <td mat-cell *matCellDef="let item">{{item.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="英文名称">
+      <th mat-header-cell *matHeaderCellDef>{{'英文名称' | translate}}</th>
+      <td mat-cell *matCellDef="let item">{{item.name_en}}</td>
+    </ng-container>
+    <ng-container matColumnDef="基础计量单位">
+      <th mat-header-cell *matHeaderCellDef>{{'基础计量单位' | translate}}</th>
+      <td mat-cell *matCellDef="let item">{{item.base_unit.display_name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="操作">
+      <th mat-header-cell *matHeaderCellDef>{{'操作' | translate}}</th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-raised-button color="primary" (click)="measureEdit(item.id)">{{'编辑' | translate}}</button>
+        <button mat-raised-button color="accent" (click)="measureDelete(item.id)">{{'删除' | translate}}</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,25 @@
+<div class="page-edit">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="{{'名称' | translate}}" formControlName="name">
+      <mat-error *ngIf="profileForm.invalid">{{'请输入中文名' | translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{'英文名称' | translate}}" formControlName="name_en">
+      <mat-error *ngIf="profileForm.invalid">{{'请输入英文名' | translate}}</mat-error>
+    </mat-form-field>
+    <p>{{'基础计量单位' | translate}}</p>
+    <mat-form-field formGroupName="base_unit">
+      <input matInput placeholder="{{'名称' | translate}}" formControlName="name">
+      <mat-error *ngIf="profileForm.invalid">{{'请输入基础计量单位名称' | translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field formGroupName="base_unit">
+      <input matInput placeholder="{{'英文名称' | translate}}" formControlName="name_en">
+      <mat-error *ngIf="profileForm.invalid">{{'请输入基础计量单位英文名称' | translate}}</mat-error>
+    </mat-form-field>
+    <button type="submit" class="submit global-submit" mat-raised-button
+            [disabled]="!profileForm.valid">{{'提交' | translate}}</button>
+    <button type="button" class="global-back" mat-raised-button
+            (click)="onBack()">{{'返回' | translate}}</button>
+  </form>
+</div>

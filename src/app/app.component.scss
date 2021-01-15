@@ -1,0 +1,25 @@
+::ng-deep .mat-menu-panel {
+  button {
+    text-align: center;
+  }
+}
+
+::ng-deep .mat-raised-button {
+  margin-right: 8px !important;
+}
+
+::ng-deep .submit {
+  background-color: #5555c6 !important;
+  color: #fff !important;
+}
+
+::ng-deep .global-submit {
+  width: 100%;
+  margin-top: 5px !important;
+  color: #fff !important;
+}
+
+::ng-deep .global-back {
+  width: 100%;
+  margin-top: 10px !important;
+}
